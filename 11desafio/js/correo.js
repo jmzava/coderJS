@@ -1,33 +1,30 @@
-service_id: 'service_46usxmj';
-template_id: 'template_murrdmt';
 
-// function logMail() {
-//   emailjs.init("user_j2TxB8ZQtFXXf8WKVEqYO");
-//   };
+// const btnEnvioCorreo = document.getElementById("senLogButton");
 
-// function enviarCorreo(parametros){
-//   var tempParametros = 
-//       from_name= "buceocoder@gmail.com"
-//       to_name="jmzava@gmail.com"
-//       message="mensaje de prueba"
-// }
+// btnEnvioCorreo.addEventListener("click", envioCorreo);
 
-// emailjs.sendForm(serviceID, templateID, tempParametros)
-// .then(function(res){
-//     console.log("enviado",res.status);
-// })
-btnEnvioCorreo.addEventListener("click", envioCorreo);
+// messagebuceo = 1
+// messagepreal = 12
+// messagetreal = 65
+// messageptabla = 15
+// messagettabla = 66
+// messagegrep = "B";
 
-
-function envioCorreo(){
+function envioCorreo(messagePara,messageBuceo,messagePReal,messageTReal,messagePTabla,messageTTabla,messageGRep){
 var data = {
   service_id: 'service_46usxmj',
-  template_id: 'template_murrdmt',
-  user_id: 'buceo',
+  template_id: 'template_prxy9mh',
+  user_id: 'user_j2TxB8ZQtFXXf8WKVEqYO',
   template_params: {
-      'username': 'BUCEOCODER',
-      'to_name':'jmzava@gmail.com'
-  }
+      'from_name': 'BuceoCoder',
+      'to_name': messagePara,
+      'buceo': messageBuceo,
+      'preal':messagePReal,
+      'treal':messageTReal,
+      'ptabla':messagePTabla ,
+      'ttabla':messageTTabla,
+      'grep':messageGRep,
+    }
 };
 
 $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
@@ -35,8 +32,9 @@ $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
   data: JSON.stringify(data),
   contentType: 'application/json'
 }).done(function() {
-  alert('Your mail is sent!');
+  console.log('Your mail is sent!');
 }).fail(function(error) {
-  alert('Oops... ' + JSON.stringify(error));
+  console.log('Oops... ' + JSON.stringify(error));
 })
 }
+

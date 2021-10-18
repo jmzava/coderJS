@@ -37,6 +37,30 @@ div.table-title {
    text-transform:uppercase;
 }
 
+.input-box {
+  position: relative;
+}
+
+.invalid .input-box::before {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 9px;
+  width: 24px;
+  height: 24px;
+
+}
+
+.valid .input-box::before {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 9px;
+  width: 24px;
+  height: 24px;
+
+}
+
 
 /*** Table Styles **/
  

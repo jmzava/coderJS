@@ -56,6 +56,19 @@ function inputTiempoFoco() {
     }
 }
 
+function inputCorreoFoco() {
+    textoError.innerHTML = ""
+    textoError.style.color = '#00ff00'
+    if (inputIntervalo.classList.contains('invalidIngreso')) {
+        inputIntervalo.classList.remove('invalidIngreso');
+    }
+}
+
+
+function selectBuceoFocus(){
+    textoError2.innerHTML = ""
+    textoError2.style.color = '#00ff00'
+}
 /*Habilitaciones + hacer visibles*/
 function habilitoTiempo() {
     inputTiempoHTML.disabled = false;
@@ -67,6 +80,8 @@ function habilitoBotonDive() {
 
 function apareceIntervalo() {
     inputIntervaloHTML.hidden = false
+    selectBuceoHTML.hidden = false
+
 }
 
 /*deshabilitaciones + hacer invisibles*/
@@ -80,6 +95,7 @@ function deshabilitoBotonDive() {
 
 function desapareceIntervalo() {
     inputIntervaloHTML.hidden = true
+    selectBuceoHTML.hidden = true
 }
 
 /* funciones de trabajo */
@@ -90,9 +106,9 @@ function buceoDiveLog() {
         cargoLS([buceoCont, buceo.profReal, buceo.tiempoReal, buceo.profTabla, buceo.tiempoTabla, buceo.grupoRep]);
         tablaFromLS();
         buceoCont = buceoCont + 1;
-        
+
         swipeElementdown("tablaInferior")
-        
+
         botonLimpiar();
         buceo.timeOKno();
         buceo.profOKno();
@@ -204,6 +220,7 @@ function cargoTabla(tableId, indice, arrayBuceo) {
         celda.innerHTML = arrayBuceo[i];
         celda.className = 'text-center';
     }
+
 }
 
 function vacioTabla(tableID) {
@@ -243,8 +260,59 @@ function cargoArrayfromLS(NombreItem) {
 function cargoLS(buceosArray) {
     buceoVarLS = "BUCEO" + buceo.dIndex
     localStorage.setItem(buceoVarLS, JSON.stringify(buceosArray));
+    const miSelect = document.getElementById("selectBuceo");
+    var opt = document.createElement('option');
+    opt.value = buceo.dIndex;
+    opt.innerHTML = "Buceo" + buceo.dIndex;
+    miSelect.appendChild(opt);
 }
 
+
+
+function botonEnviar() {
+    let correoValido = Boolean(false)
+    let selectValido = Boolean(false)
+    let arrayMail =[]
+    correoValido = validaCorreo()
+    selectValido = validoSelect()
+    if(correoValido && selectValido){
+        let iB = document.getElementById('selectBuceo').selectedIndex;
+        arrayMail=cargoArrayfromLS("BUCEO")
+        correoPara=inputIntervalo.value.toLowerCase()
+        envioCorreo(correoPara,arrayMail[iB][0],arrayMail[iB][1],arrayMail[iB][2],arrayMail[iB][3],arrayMail[iB][4],arrayMail[iB][5])
+    }
+}
+
+
+function validoSelect(){
+let validoSel = Boolean(false)
+let validoOpcion = document.getElementById('selectBuceo');
+if (validoOpcion.selectedIndex == 0) {
+    textoError2.innerHTML = "Seleccione un Buceo"
+    textoError2.style.color = '#ff0000'
+    validoSel = false;
+}else{
+    validoSel = true;
+}
+return validoSel
+}
+
+
+function validaCorreo() {
+    let email = document.getElementById('inputIntervalo').value
+    let textoError = document.getElementById('textoError')
+    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+
+    if (email.match(pattern)) {
+        valido = true
+    } else {
+        inputIntervalo.classList.add('invalidIngreso');
+        textoError.innerHTML = "Correo invalido"
+        textoError.style.color = '#ff0000'
+        valido = false
+    }
+    return valido
+}
 
 
 /* funciones en desarrollo para eliminado de localstorage */

@@ -54,18 +54,38 @@
                     </tbody>
 
                 </table>
+                <br>
          </div>      
         <div class="column">
-            <p> <input class="formIngreso" placeholder="Intervalo" value="" id="inputIntervalo"></p>
+            <br>
+            <div>
+            <label id="labelCorreo" class="formLabel2">Ingrese Su Correo</label>
+            <p> <input class="formIngreso input-box" type="email" placeholder="" value="" id="inputIntervalo"></p>
+            <span id="textoError"></span>
+            <span id="textoError2"></span>
+            <br>
+            <br>
+            <br>
+            <select  class="selectCustom" name="selectBuceo" id="selectBuceo" style="width: 100%;">
+                <option hidden selected> Buceo</option>
+            </select>
+            </div>
+            <br>
+            <br><br>
+
+            <br>
+            <button id="botonFuera" class="text-center btn btn-primary btn-lg" >Enviar</button>
         </div>
     </div>
 </div>
+
 
 <script src="js/jquery-3.6.0.js"></script>         <!-- definiciones JQuery -->
 <script src="js/animaciones.js"></script>         <!-- anuimaciones JQuery -->
 <script src="js/clases.js"></script>            <!-- definicion de clases -->
 <script src="js/functions.js"></script>         <!-- definicion de funciones  -->
 <script src="js/principal.js"></script>         <!-- definiciones principales -->
+<script src="js/correo.js"></script>
 
 
 </body>

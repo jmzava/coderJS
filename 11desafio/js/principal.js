@@ -14,8 +14,11 @@ const buceoMezcla = new BuceoMezcla(0, 0);
 const inputProfundidadHTML = document.getElementById("inputProfundidad");
 const inputTiempoHTML = document.getElementById("inputTiempo");
 const inputIntervaloHTML = document.getElementById("inputIntervalo");
+const selectBuceoHTML = document.getElementById("selectBuceo");
 const buttonDiveLog = document.getElementById("DiveLog");
 const buttonLimpiar = document.getElementById("Limpiar");
+const buttonBotonFuera = document.getElementById("botonFuera");
+
 // const selectorFila = document.getElementById("tablaBuceos");
 // definicion de arrays
 
@@ -52,7 +55,6 @@ limpioLS();
 deshabilitoTiempo();
 $("#DiveLog").hide()
 $("#Simular").hide()
-desapareceIntervalo();
 mezclaDeco(1);
 
 
@@ -65,7 +67,12 @@ inputProfundidadHTML.addEventListener('focus', inputProfundidadFoco,true);
 inputTiempoHTML.addEventListener('blur', inputTiempoDejaFoco,true);
 inputTiempoHTML.addEventListener('focus', inputTiempoFoco,true);
 
+// inputIntervaloHTML.addEventListener('blur', inputTiempoDejaFoco,true);
+inputIntervaloHTML.addEventListener('focus', inputCorreoFoco,true);
+selectBuceoHTML.addEventListener('focus',selectBuceoFocus,true )
+
 buttonDiveLog.addEventListener("click", buceoDiveLog);
 buttonLimpiar.addEventListener("click", botonLimpiar);
+buttonBotonFuera.addEventListener("click",botonEnviar);
 
 // selectorFila.addEventListener("click",selectorDeFila);
